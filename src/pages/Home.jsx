@@ -3,8 +3,8 @@ import { FaUser, FaLock, FaSignInAlt, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Home = ({ setShowSidebar, setShowNavbar }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const Home = ({ setShowSidebar, setShowNavbar, isLoggedIn, setIsLoggedIn }) => {
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -29,7 +29,7 @@ const Home = ({ setShowSidebar, setShowNavbar }) => {
         username: username,
         password: password,
       });
-  
+      console.log('Login response:', response.data);
       if (response.data.success) {
         setIsLoggedIn(true);
         setLoginError('');

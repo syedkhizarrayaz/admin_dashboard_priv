@@ -12,7 +12,8 @@ const Sidebar = () => {
   const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2';
   const handleCloseSideBar = () => {
     if (activeMenu !== undefined && screenSize <= 900) {
-      setActiveMenu(false);
+      setActiveMenu(true);
+      
     }
   };
   return (
@@ -21,7 +22,7 @@ const Sidebar = () => {
         <>
           <div className="flex justify-between items-center">
             <Link to="/Users" 
-            onClick={handleCloseSideBar} 
+            // onClick={handleCloseSideBar} 
             className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight text-white">
               <SiShopware /> <span>Admin Panel</span>
             </Link>
@@ -46,7 +47,7 @@ const Sidebar = () => {
                   <NavLink
                     to={`/${link.name}`}
                     key={link.name}
-                    onClick={handleCloseSideBar}
+                    // onClick={handleCloseSideBar}
                     style={({ isActive }) => ({
                     })}
                     className={({ isActive }) => (isActive ? activeLink : normalLink)}

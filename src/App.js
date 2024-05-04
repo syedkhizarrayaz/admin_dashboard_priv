@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import { Navbar, Footer, Sidebar } from './components';
 import { Users, Home} from './pages';
 import { useStateContext } from './contexts/ContextProvider';
@@ -7,6 +7,7 @@ import './App.css';
 
 const App = () => {
   const {activeMenu} = useStateContext();
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
    // State to manage the visibility of Sidebar and Navbar
   const [showSidebar, setShowSidebar] = useState(true);
   const [showNavbar, setShowNavbar] = useState(true);
@@ -39,10 +40,10 @@ const App = () => {
           <div>
             <Routes>
               {/* Dashboard overview of the usage of accounts*/}
-              <Route path='/' element={<Home setShowSidebar={setShowSidebar} setShowNavbar={setShowNavbar}/>}/>
+              <Route path='/' element={<Home setShowSidebar={setShowSidebar} setShowNavbar={setShowNavbar} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}/>
 
               {/* pages */}
-              <Route path='/users' element={<Users />}></Route>
+              <Route path='/users' element={isLoggedIn ? <Users /> : <Navigate to="/" replace />}></Route>
               <Route path='/Logout' element={<Home setShowSidebar={setShowSidebar} setShowNavbar={setShowNavbar}/>}></Route>
             </Routes>
 

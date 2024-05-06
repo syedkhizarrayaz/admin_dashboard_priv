@@ -64,6 +64,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Navbar, Footer, Sidebar } from './components';
 import { Users, Home } from './pages';
 import { useStateContext } from './contexts/ContextProvider';
+import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import './App.css';
 
 const App = () => {

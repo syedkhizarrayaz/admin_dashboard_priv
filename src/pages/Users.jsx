@@ -120,14 +120,14 @@
 
 // export default Users;
 import React, { useRef, useEffect, useState } from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, Edit, Toolbar, Sort, Filter } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, Edit, Toolbar, Sort, Filter, Search } from '@syncfusion/ej2-react-grids';
 import { ClipLoader } from 'react-spinners';
 import { Header } from '../components';
 import Switch from 'react-switch';
 
 const Users = () => {
   const selectionsettings = { persistSelection: true };
-
+  const toolbarOptions = ['Search'];
   const gridInstance = useRef(null);
   const [usersData, setUsersData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -231,6 +231,7 @@ const Users = () => {
           selectionSettings={selectionsettings}
           allowSorting
           ref={gridInstance}
+          toolbar={toolbarOptions}
         >
           <ColumnsDirective>
             <ColumnDirective field="id" headerText="User ID" isPrimaryKey={true} width={100} />
@@ -256,7 +257,7 @@ const Users = () => {
             )} width={200} />
             <ColumnDirective field="payment_date" headerText="Payment" width={150} />
           </ColumnsDirective>
-          <Inject services={[Page, Selection, Toolbar, Edit, Sort, Filter]} />
+          <Inject services={[Page, Selection, Toolbar, Edit, Sort, Filter, Search]} />
         </GridComponent>
       )}
     </div>
